@@ -27,7 +27,6 @@ export class Navbar extends Component {
   createABox() {
     createBoxInShoppingCart()
     this.setState({buildBoxHidden: 'hidden'})
-    console.log('created box')
   }
 
   showBuildBox () {
@@ -35,9 +34,7 @@ export class Navbar extends Component {
   }
 
   render () {
-    console.log('currentUser', this.props.currentUser)
     const {currentUser, handleLogout} = this.props;
-    // console.log(typeof this.props.location.pathname)
 
     return (
       <div className='navbar'>

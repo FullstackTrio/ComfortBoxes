@@ -9,7 +9,6 @@ function selfOrAdmin (req, res, next) {
 }
 
 function admin (req, res, next) {
-  // `req.user` was retrieved from postgres db via sequelize
   if (!req.user) {
     res.status(401).end();
   } else if (!req.user.isAdmin) {

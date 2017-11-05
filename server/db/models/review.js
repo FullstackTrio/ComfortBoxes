@@ -12,22 +12,3 @@ const Review = db.define('review', {
 //Review table has 2 foreign keys: user_id and product_id, and is not referenced in other tables
 module.exports = Review
 
-/**
- * instanceMethods
- */
-
-
-
-
-/**
- * classMethods
- */
-
-
-
-
-
-/**
- * hooks
- */
-

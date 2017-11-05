@@ -1,5 +1,5 @@
 import axios from 'axios';
-//TEMPLATE
+
 const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
 
 export function fetchCategories () {

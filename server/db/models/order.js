@@ -33,12 +33,6 @@ const Order = db.define('order', {
 //Order table has 2 foreign keys: user_id and product_id, and is referenced in BoxItem table
 module.exports = Order
 
-/**
- * instanceMethods
- */
-
-
-
 
 /**
  * classMethods
@@ -64,9 +58,3 @@ Order.createOrder = function (orderObj, userId, sessionId, shippingDetails) {
         })
       })
 }
-
-
-/**
- * hooks
- */
-

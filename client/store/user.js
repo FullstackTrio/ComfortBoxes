@@ -31,7 +31,6 @@ export const me = () =>
 
 export const auth = (email, password, method) =>
   dispatch => {
-    console.log('method', method);
     return axios.post(`/auth/${method}`, { email, password })
       .then(res => {
         dispatch(getUser(res.data))

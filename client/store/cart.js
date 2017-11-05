@@ -12,7 +12,7 @@
   */
 
 import axios from 'axios';
-//TEMPLATE
+
 const GET_CURRENT_CART = 'GET_CURRENT_CART';
 const CLEAR_STORE_CART = 'CLEAR_STORE_CART';
 

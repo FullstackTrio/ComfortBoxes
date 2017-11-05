@@ -56,5 +56,6 @@ const setSaltAndPassword = user => {
   }
 }
 
+// when password is set, salted encrypted password is created
 User.beforeCreate(setSaltAndPassword)
 User.beforeUpdate(setSaltAndPassword)

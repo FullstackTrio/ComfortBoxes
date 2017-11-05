@@ -29,8 +29,7 @@ export class BuildBox extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      seeModal: false,
-      modalIsOpen: false  //test
+      modalIsOpen: false
     }
     this.handleCompleteBox = this.handleCompleteBox.bind(this)
     this.openModal = this.openModal.bind(this);

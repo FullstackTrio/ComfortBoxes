@@ -27,14 +27,6 @@ Order.hasMany(BoxItem, {foreignKey: 'order_id'});
 Category.belongsToMany(Product, {through: 'product_category', foreignKey: 'category_id'});
 Product.belongsToMany(Category, {through: 'product_category', foreignKey: 'product_id'});
 
-// Product.addScope('defaultScope', {include: [{model: Category}]}, {override: true}) //{through: 'product_category', })
-
-/**
- * We're exporting all of our models here, so that any time a module needs a model,
- * we can just require it from 'db/models'
- * for example, we can say: const {User} = require('../db/models')
- * instead of: const User = require('../db/models/user')
- */
 
 module.exports = {
   User, Review, Product, Order, Category, BoxItem

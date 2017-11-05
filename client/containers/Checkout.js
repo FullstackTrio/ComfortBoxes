@@ -49,14 +49,12 @@ export class Checkout extends Component {
 
   handleSubmit (event) {
     event.preventDefault()
-    console.log('started')
     const email = this.state.emailInput;
     const address = this.state.addressInput;
     const city = this.state.cityInput;
     const state = this.state.stateInput;
     const storageCart = getCopyOfShoppingCart()
     const boxIds = Object.keys(storageCart);
-    console.log('user', this.props.user)
     let user = null;
     if (Object.keys(this.props.user).length) {
       user = this.props.user.id;
@@ -77,9 +75,6 @@ export class Checkout extends Component {
 
         clearCart();
         this.props.clearStoreCart();
-
-        console.log('this.props.cart: ', this.props.cart)
-
         this.setState({
           submitted: true
         });

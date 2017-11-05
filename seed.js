@@ -158,7 +158,6 @@ const orders = [{
 //   orders.push({status: ['created', 'processing', 'cancelled', 'completed'][Math.floor(Math.random() * 4)]})
 // }
 
-// console.log("orders-test", orders)
 
 let seededBoxProducts, seededSightProducts, seededSmellProducts, seededTouchProducts, seededTasteProducts, seededSoundProducts, seededCategories
 

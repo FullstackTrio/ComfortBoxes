@@ -37,20 +37,9 @@ const BoxItem = db.define('boxItem', {
 })
 //BoxItem table has 2 foreign keys: order_id and product_id, but is not referenced in other tables
 
-
-
-
-/**
- * instanceMethods
- */
-
-
 /**
  * classMethods
  */
-
-
-
 
 
 /* When the same item is added to a box more than once,
@@ -62,7 +51,6 @@ but productQuantityInBox and productPrice will both increase
 // BoxItem.storeOrderedItems is called by Order.createOrder
 // and returns order that items are associated with.
 BoxItem.storeOrderedItems = function (arrayOfProductIds, order, boxId) {
-  console.log('getting in boxItem: arrayOfProductIds, order.id, boxId', arrayOfProductIds, order.id, boxId)
   arrayOfProductIds.forEach((productId) => {
     const promiseArray = [
       BoxItem.create({
@@ -82,8 +70,5 @@ BoxItem.storeOrderedItems = function (arrayOfProductIds, order, boxId) {
   return order;
 }
 
-/**
- * hooks
- */
 
 module.exports = BoxItem;
