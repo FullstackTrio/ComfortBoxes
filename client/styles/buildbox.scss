@@ -5,17 +5,22 @@
   align-items: center;
   padding-top: 100px;
 
+  .btnGroup {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
   .productList,
   .categoryList {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 1000px;
-    margin: 1em 0;
   }
 
   .categoryList {
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
     font-size: 3em;
   }
 
@@ -29,9 +34,7 @@
       color: $linkHover;
     }
   }
-  .btnGroup {
-    display: inline;
-  }
+
   .product {
     width: 200px;
     margin: 20px;

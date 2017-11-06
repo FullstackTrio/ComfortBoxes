@@ -11,6 +11,8 @@
 @import './cart.scss';
 @import './details.scss';   //Styling for product detail page
 @import './ordersComplete.scss';   //Styling for order completion page
+@import './categoryList.scss'; //Styling for category list
+@import './pay.scss'; //Styling for pay page
 
 body {
   background-color: $backgroundColor;

@@ -1,12 +1,18 @@
 #detailsPage {
-  padding-top: 100px;
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   max-width: 1000px;
   margin: 1em 10px;
 
+  #backBtn {
+    margin: 30px 40px 60px;
+
+  }
+  .product {
+    align-self: center;
+  }
 
 }
 .categoryList {
@@ -14,8 +20,6 @@
   flex-wrap: wrap;
   justify-content: center;
   max-width: 1000px;
-  margin: 1em 0;
-  margin-bottom: 2em;
   font-size: 3em;
 }
 

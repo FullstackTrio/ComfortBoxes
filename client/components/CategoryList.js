@@ -6,15 +6,18 @@ import { Link } from 'react-router-dom';
  *   renders Links of categories
  */
 export default function CategoryList ({categories, current}) {
+  let currentCategoryDescription;
 
   return (
-    <div style={{marginTop: '10px', marginBottom: '50px'}} className='categoryList'>
+    <div id="categoryListPage" className="categoryList">
       {
         categories.map((category, i) => {
-          if (current && current.toLowerCase() === category.title.toLowerCase()) {
+          if (current && current === category.title) {
+            currentCategoryDescription = category.description;
             return (
               <Link
-                style={{padding: '5px', border: 'solid rgba(128, 128, 128, 0.12)', borderRadius: '10px'}}
+                id="currentCategoryLink"
+                className="categoryLink"
                 key={i}
                 to={`/buildbox/${category.title}`}>
                 {category.title}
@@ -23,7 +26,7 @@ export default function CategoryList ({categories, current}) {
           } else {
             return (
               <Link
-                style={{padding: '5px'}}
+                className="categoryLink"
                 key={i}
                 to={`/buildbox/${category.title}`}>
                 {category.title}
@@ -31,7 +34,9 @@ export default function CategoryList ({categories, current}) {
             )
           }
         })
+
       }
+      <h3 id="categoryDescription" >{currentCategoryDescription}</h3>
     </div>
   );
 }

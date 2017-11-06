@@ -25,33 +25,13 @@ import history from '../history'
  */
 
 
-
- const customModalStyle = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    fontSize: '18px',
-    lineHeight: '1.6',
-    fontWeight: '400',
-    fontFamily: 'sans-serif'
-  }
-};
-
-
 export class BuildBox extends Component {
   constructor(props) {
     super(props)
-    this.completeBox = this.completeBox.bind(this)
-
     this.state = {
       modalIsOpen: false
     }
-
-
+    this.handleCompleteBox = this.handleCompleteBox.bind(this)
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -61,24 +41,25 @@ export class BuildBox extends Component {
     this.props.fetchCategories();
   }
 
-  completeBox (redirectTo) {
-    const tempCart = getCopyOfTempShoppingCart();
-    const current = localStorage.getItem('currentBoxId')
-    if (tempCart[current]) {
-      completeBox()
-      if (redirectTo === 'toHome') {
-        history.push('/');
-      } else if (redirectTo === 'toCart') {
-        history.push('/cart');
-      }
-    } else {
-      alert('Cannot complete box without a box product selected')
+  handleCompleteBox (redirectTo) {
+    completeBox();
+    if (redirectTo === 'toHome') {
+      history.push('/');
+    } else if (redirectTo === 'toCart') {
+      history.push('/cart');
     }
   }
 
-
   openModal() {
-    this.setState({modalIsOpen: true});
+    const tempCart = getCopyOfTempShoppingCart();
+    const current = localStorage.getItem('currentBoxId');
+    if (tempCart[current]) {
+      this.setState({modalIsOpen: true});
+    } else {
+      // redirects user to box category so that they can more easily access box product to select
+      history.push('/buildbox/Box')
+      alert('Please select a box type before adding completed box to cart');
+    }
   }
 
   closeModal() {
@@ -88,43 +69,43 @@ export class BuildBox extends Component {
 
   render () {
 
-    const currentCategory = this.props.location.pathname.slice(10)
-    const categoryTitles = this.props.categories.map(cat => cat.title)
-    const nextCategory = categoryTitles[categoryTitles.indexOf(currentCategory) + 1]
-    const prevCategory = categoryTitles[categoryTitles.indexOf(currentCategory) - 1]
+    const currentCategory = this.props.location.pathname.slice(10);
+    const categoryTitles = this.props.categories.map(cat => cat.title);
+    const nextCategory = categoryTitles[categoryTitles.indexOf(currentCategory) + 1];
+    const prevCategory = categoryTitles[categoryTitles.indexOf(currentCategory) - 1];
 
     return (
       <div id="buildboxPage">
         <CategoryList current={currentCategory} categories={this.props.categories} />
+        <div className="btnGroup">
+          {prevCategory &&
+            <PrevSidebar prevCategory={prevCategory} />
+          }
+          {nextCategory &&
+            <NextSidebar nextCategory={nextCategory} />
+          }
+        </div>
+        <button onClick={this.openModal}>Add Completed Box to Cart</button>
+        <ProductList categories={this.props.categories} />
+        <button onClick={this.openModal}>Add Completed Box to Cart</button>
+        <div className="btnGroup">
+          {prevCategory &&
+            <PrevSidebar prevCategory={prevCategory} />
+          }
+          {nextCategory &&
+            <NextSidebar nextCategory={nextCategory} />
+          }
+        </div>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style={customModalStyle}
         >
           <div>Add Box to Cart and...</div>
-            <button onClick={() => this.completeBox('toHome')}>Continue Shopping</button>
-            <button onClick={() => this.completeBox('toCart')}>Go to Cart</button>
+            <button onClick={() => this.handleCompleteBox('toHome')}>Continue Shopping</button>
+            <button onClick={() => this.handleCompleteBox('toCart')}>Go to Cart</button>
             <button onClick={this.closeModal}>Oops.. Back to Box</button>
         </Modal>
-        <button onClick={this.openModal}>Add Completed Box to Cart</button>
-        <div className="btnGroup">
-          {prevCategory &&
-            <PrevSidebar prevCategory={prevCategory} />
-          }
-          {nextCategory &&
-            <NextSidebar nextCategory={nextCategory} />
-          }
-        </div>
-        <ProductList categories={this.props.categories} />
-        <div className="btnGroup">
-          {prevCategory &&
-            <PrevSidebar prevCategory={prevCategory} />
-          }
-          {nextCategory &&
-            <NextSidebar nextCategory={nextCategory} />
-          }
-        </div>
-        <button onClick={this.openModal}>Add Completed Box to Cart</button>
       </div>
     );
   }
@@ -140,3 +121,19 @@ export default connect(
   mapStateToProps,
   {fetchCategories}
 )(BuildBox);
+
+
+const customModalStyle = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    fontSize: '18px',
+    lineHeight: '1.6',
+    fontWeight: '400',
+    fontFamily: 'sans-serif'
+  }
+};

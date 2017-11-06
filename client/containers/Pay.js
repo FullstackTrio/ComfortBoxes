@@ -13,7 +13,7 @@ export default class Pay extends Component {
 
   render () {
     return (
-      <div style={{marginTop: '300px', marginLeft: '250px'}}>
+      <div id="payPage">
       <h1>Billing Information</h1>
       <StripeCheckout
       token={this.onToken}

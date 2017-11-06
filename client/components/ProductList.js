@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import { getCopyOfTempShoppingCart, addProductToBox } from '../shoppingCart'
 import { Notification } from 'react-notification'
-
+import history from '../history'
 
 /**
  * ProductList component:
@@ -44,7 +44,8 @@ class Products extends Component {
     const shoppingCart = getCopyOfTempShoppingCart()
     const currentBox = localStorage.getItem('currentBoxId')
     if (shoppingCart[currentBox] && category.title === 'Box'){
-      alert('Only one box per box!');
+      alert('Only one box type can be selected per box!');
+      history.push('/buildbox/Sight');
     } else if ((shoppingCart[currentBox] && shoppingCart[currentBox].length <= 10) || category.title === 'Box') {
       addProductToBox(event.target.name)
       this.setState({showSuccessNotification: true});

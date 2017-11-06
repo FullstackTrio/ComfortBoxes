@@ -7,12 +7,30 @@ const Order = require('./server/db/models/order');
 const Review = require('./server/db/models/review');
 
 const categories = [
-  { title: 'Box'},
-  { title: 'Sight'},
-  { title: 'Taste'},
-  { title: 'Touch'},
-  { title: 'Sound'},
-  { title: 'Smell'}
+  {
+    title: 'Box',
+    description: 'Choose which box type you would like your comforting items to be enclosed within.'
+  },
+  {
+    title: 'Sight',
+    description: 'What do you find most comforting to look at when you\'re in distress? Choose the visual items you would most like to see in your box.'
+  },
+  {
+    title: 'Taste',
+    description: 'Mmmm... Which tastes do you find most comforting? Choose the flavored items you would most like to have in your box.'
+  },
+  {
+    title: 'Touch',
+    description: 'Certain materials can be quite grounding. Choose the items you find most comforting to touch.'
+  },
+  {
+    title: 'Sound',
+    description: 'Music and sound have helped soothe people for centuries. Choose the sounds you would most like your box to be able to play to comfort you.'
+  },
+  {
+    title: 'Smell',
+    description: 'Calming, inspiring, balancing... smells give us some of our strongest associations with positive vibes. Select the smells you would most like to comfort you when you open your box.'
+  }
 ]
 
 
