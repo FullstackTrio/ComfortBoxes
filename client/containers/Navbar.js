@@ -38,11 +38,14 @@ export class Navbar extends Component {
 
     return (
       <div className='navbar'>
-        {
-          currentUser.isAdmin
-            ? <Link to='/admin' className='navHome'>ADMIN</Link>
-            : <Link to='/' className='navHome'>HOME</Link>
-        }
+        <div>
+          {
+            currentUser.isAdmin
+              ? <Link to='/admin' className='navHome'>ADMIN</Link>
+              : <Link to='/' className='navHome'>HOME</Link>
+          }
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/FullstackTrio/ComfortBoxes">VIEW ON GITHUB</a>
+        </div>
         <div className='nav'>
           {(!this.props.location.pathname.includes('buildbox') && !this.props.location.pathname.includes('products')) &&
             <Link to='/buildbox/Box' onClick={this.createABox}>BUILD MY BOX</Link>
